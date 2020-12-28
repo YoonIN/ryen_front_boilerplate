@@ -5,7 +5,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Button, ButtonProps } from "./Button";
 
 export default {
-  title: "Example/Button",
+  title: "Button/Button",
   component: Button,
   argTypes: {
     backgroundColor: { control: "color" },
@@ -59,7 +59,7 @@ export const sizes = () => {
           className="description"
           style={{ marginBottom: 15, marginTop: 15 }}
         >
-          Big
+          Large
         </div>
         <Button size="large">BUTTON</Button>
       </div>
