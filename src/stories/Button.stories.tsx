@@ -1,89 +1,100 @@
-import React from 'react';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Button, ButtonProps } from './Button';
-
+import { CustomButton, ButtonProps } from 'styles/CustomButton';
 export default {
   title: 'Button/Button',
-  component: Button,
+  component: CustomButton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => <CustomButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  children: 'Button',
-};
-
-export const Meduim = Template.bind({});
-Meduim.args = {
-  size: 'medium',
-  children: 'Button',
-};
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  children: 'Button',
+  label: 'Button',
 };
 
 export const sizes = () => {
   return (
-    <div>
+    <div css={buttonWrapper}>
       <div>
-        <div className="description" style={{ marginBottom: 15 }}>
-          Small
-        </div>
-        <Button size="small">BUTTON</Button>
+        <CustomButton size="large" label="Button" />
       </div>
       <div>
-        <div
-          className="description"
-          style={{ marginBottom: 15, marginTop: 15 }}
-        >
-          Medium
-        </div>
-        <Button size="medium">BUTTON</Button>
+        <CustomButton size="medium" label="Button" />
       </div>
       <div>
-        <div
-          className="description"
-          style={{ marginBottom: 15, marginTop: 15 }}
-        >
-          Large
-        </div>
-        <Button size="large">BUTTON</Button>
+        <CustomButton size="small" label="Button" />
       </div>
     </div>
   );
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  theme: 'info',
-  children: 'Button',
+export const colors = () => {
+  return (
+    <div css={buttonWrapper}>
+      <div>
+        <CustomButton theme="secondary" label="Secondary" />
+      </div>
+      <div>
+        <CustomButton theme="primary" label="Primary" />
+      </div>
+      <div>
+        <CustomButton theme="info" label="Info" />
+      </div>
+      <div>
+        <CustomButton theme="success" label="Success" />
+      </div>
+      <div>
+        <CustomButton theme="warning" label="Warning" />
+      </div>
+      <div>
+        <CustomButton theme="danger" label="Danger" />
+      </div>
+    </div>
+  );
 };
-export const Success = Template.bind({});
-Success.args = {
-  theme: 'success',
-  children: 'Button',
+
+export const OutLineColors = () => {
+  return (
+    <div css={buttonWrapper}>
+      <div>
+        <CustomButton theme="secondary" label="Secondary" />
+      </div>
+      <div>
+        <CustomButton theme="out_primary" label="Primary" />
+      </div>
+      <div>
+        <CustomButton theme="out_info" label="Info" />
+      </div>
+      <div>
+        <CustomButton theme="out_success" label="Success" />
+      </div>
+      <div>
+        <CustomButton theme="out_warning" label="Warning" />
+      </div>
+      <div>
+        <CustomButton theme="out_danger" label="Danger" />
+      </div>
+    </div>
+  );
 };
-export const Warining = Template.bind({});
-Warining.args = {
-  theme: 'warning',
-  children: 'Button',
-};
-export const Danger = Template.bind({});
-Danger.args = {
-  theme: 'danger',
-  children: 'Button',
-};
+
+// export const Danger = Template.bind({});
+// Danger.args = {
+//   theme: 'danger',
+//   label: 'Button',
+// };
+
+const buttonWrapper = css`
+  div {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    vertical-align: top;
+  }
+`;
