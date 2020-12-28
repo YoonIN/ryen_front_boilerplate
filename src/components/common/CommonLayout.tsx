@@ -1,11 +1,8 @@
 import React from "react";
-import SideBar from "../src/components/common/sidebar/sidebar";
-import "./App.css";
 
-function App() {
+export default function CommonLayout() {
   return (
     <>
-      <SideBar />
       <div className="App">
         <header className="App-header">
           <p>
@@ -24,5 +21,3 @@ function App() {
     </>
   );
 }
-
-export default App;
