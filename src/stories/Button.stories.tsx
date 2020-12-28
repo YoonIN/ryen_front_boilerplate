@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Button, ButtonProps } from "./Button";
+import { Button, ButtonProps } from './Button';
 
 export default {
-  title: "Button/Button",
+  title: 'Button/Button',
   component: Button,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as Meta;
 
@@ -16,24 +16,24 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: "Button",
+  children: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: "small",
-  children: "Button",
+  size: 'small',
+  children: 'Button',
 };
 
 export const Meduim = Template.bind({});
 Meduim.args = {
-  size: "medium",
-  children: "Button",
+  size: 'medium',
+  children: 'Button',
 };
 export const Large = Template.bind({});
 Large.args = {
-  size: "large",
-  children: "Button",
+  size: 'large',
+  children: 'Button',
 };
 
 export const sizes = () => {
@@ -69,28 +69,21 @@ export const sizes = () => {
 
 export const Info = Template.bind({});
 Info.args = {
-  color: "info",
-  children: "Button",
+  theme: 'info',
+  children: 'Button',
 };
 export const Success = Template.bind({});
 Success.args = {
-  color: "success",
-  children: "Button",
+  theme: 'success',
+  children: 'Button',
 };
 export const Warining = Template.bind({});
 Warining.args = {
-  color: "warning",
-  children: "Button",
+  theme: 'warning',
+  children: 'Button',
 };
 export const Danger = Template.bind({});
 Danger.args = {
-  color: "danger",
-  children: "Button",
-};
-
-export const Circle = Template.bind({});
-Circle.args = {
-  color: "danger",
-  children: "Button",
-  className: "btn-circle",
+  theme: 'danger',
+  children: 'Button',
 };

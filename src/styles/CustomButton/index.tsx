@@ -9,14 +9,14 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button = ({
+export default function CustomButton({
   theme = 'secondary',
   size = 'medium',
   backgroundColor,
   className,
   children,
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   return (
     <button
       type="button"
@@ -27,7 +27,7 @@ export const Button = ({
       {children}
     </button>
   );
-};
+}
 
 const style = css`
   font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
