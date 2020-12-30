@@ -15,7 +15,7 @@ export type CustomGroupButtonProps = {
 };
 
 /**
- * 여러개의 `Button` 컴포넌트를 보여주고 싶거나, 버튼을 우측에 정렬하고 싶을 땐 `ButtonGroup` 컴포넌트를 사용하세요.
+ * 여러개의 `Button` 컴포넌트를 보여주고 싶거나, 버튼을 정렬하고 싶을 땐 `ButtonGroup` 컴포넌트를 사용하세요.
  */
 export const CustomGroupButton = ({
   direction,
