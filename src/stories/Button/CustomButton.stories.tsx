@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { CustomButton, ButtonProps } from 'styles/Button/CustomButton';
 
-import { CustomButton, ButtonProps } from 'styles/CustomButton';
 export default {
-  title: 'Button/Button',
+  title: 'CustomButton/CustomButton',
   component: CustomButton,
   argTypes: {
     backgroundColor: { control: 'color' },
