@@ -19,11 +19,37 @@ export default {
 //   <CustomGroupButton {...args} />
 // );
 
-export const rightAlign = () => {
+export const defaultAlign = () => {
   return (
-    <CustomGroupButton rightAlign>
+    <CustomGroupButton>
       <CustomButton label="취소" />
       <CustomButton label="확인" />
+    </CustomGroupButton>
+  );
+};
+
+export const centerAlign = () => {
+  return (
+    <CustomGroupButton position="center">
+      <CustomButton label="취소" />
+      <CustomButton label="확인" />
+    </CustomGroupButton>
+  );
+};
+export const rightAlign = () => {
+  return (
+    <CustomGroupButton position="right">
+      <CustomButton label="취소" />
+      <CustomButton label="확인" />
+    </CustomGroupButton>
+  );
+};
+
+export const row = () => {
+  return (
+    <CustomGroupButton direction="row">
+      <CustomButton label="클릭" />
+      <CustomButton label="클릭" />
     </CustomGroupButton>
   );
 };
@@ -31,14 +57,6 @@ export const rightAlign = () => {
 export const column = () => {
   return (
     <CustomGroupButton direction="column">
-      <CustomButton label="클릭" />
-      <CustomButton label="클릭" />
-    </CustomGroupButton>
-  );
-};
-export const row = () => {
-  return (
-    <CustomGroupButton direction="row">
       <CustomButton label="클릭" />
       <CustomButton label="클릭" />
     </CustomGroupButton>
@@ -53,12 +71,3 @@ export const customGapColumn = () => {
     </CustomGroupButton>
   );
 };
-
-// export const customGap = () => {
-//   return (
-//     <CustomGroupButton gap="1rem">
-//       <CustomButton label='취소'/>
-//       <CustomButton label='확인/'>
-//     </CustomGroupButton>
-//   );
-// };

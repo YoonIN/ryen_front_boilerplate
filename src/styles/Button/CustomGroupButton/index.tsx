@@ -4,8 +4,8 @@ import { css, jsx } from '@emotion/core';
 export type CustomGroupButtonProps = {
   /** 버튼을 보여줄 방향 */
   direction: 'row' | 'column';
-  /** 버튼을 우측에 보여줍니다. */
-  rightAlign?: boolean;
+  /** 버튼을 정렬을 지정합니다. */
+  position?: 'left' | 'center' | 'right';
   /** 버튼과 버튼사이의 간격을 설정합니다. */
   gap: number | string;
   /** 버튼 그룹에서 보여줄 버튼들 */
@@ -19,11 +19,18 @@ export type CustomGroupButtonProps = {
  */
 export const CustomGroupButton = ({
   direction,
-  rightAlign,
+  position = 'left',
   children,
   gap,
   className,
 }: CustomGroupButtonProps) => {
+  const AlignStyle = css`
+    justify-content: ${position === 'center'
+      ? 'center'
+      : position === 'right'
+      ? 'flex-end'
+      : 'stretch'};
+  `;
   return (
     <div
       css={[
@@ -32,7 +39,7 @@ export const CustomGroupButton = ({
           flexDirection: direction,
         },
         gapStyle(direction, gap),
-        rightAlign && rightAlignStyle,
+        AlignStyle,
       ]}
       className={className}
     >
@@ -55,9 +62,5 @@ const gapStyle = (direction: 'row' | 'column', gap: number | string) => {
     },
   });
 };
-
-const rightAlignStyle = css`
-  justify-content: flex-end;
-`;
 
 export default CustomGroupButton;
