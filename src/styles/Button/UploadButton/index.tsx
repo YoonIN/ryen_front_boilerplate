@@ -29,7 +29,6 @@ const style = css`
   border: 0;
   border-radius: 0.5em;
   cursor: pointer;
-  display: inline-block;
   line-height: 1;
   color: #333;
   font-size: 0.875rem;
