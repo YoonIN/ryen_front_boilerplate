@@ -2,6 +2,7 @@
 import { Fragment } from 'react';
 import { css, jsx } from '@emotion/core';
 import { GroupButton, Button } from 'styles';
+import { useTransition, animated } from 'react-spring';
 
 export type DialogProps = {
   visible: boolean;
@@ -28,28 +29,65 @@ const Dialog = ({
   onCancel,
   onConfirm,
 }: DialogProps) => {
-  if (!visible) return null;
+  const fadeTransition = useTransition(visible, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
 
+  const slideUpTransition = useTransition(visible, null, {
+    from: {
+      transform: `translateY(200px) scale(0.8)`,
+      opacity: 0,
+    },
+    enter: {
+      transform: `translateY(0px) scale(1)`,
+      opacity: 1,
+    },
+    leave: {
+      transform: `translateY(200px) scale(0.8)`,
+      opacity: 0,
+    },
+    config: {
+      tension: 200,
+      friction: 15,
+    },
+  });
   return (
     <Fragment>
-      <div css={[fullscreen, darkLayer]}></div>
-      <div css={[fullscreen, whiteBoxWrapper]}>
-        <div css={whiteBox}>
-          {title && <h3>{title}</h3>}
-          {description && <p>{description}</p>}
-          {children}
-          {!hideButtons && (
-            <GroupButton css={{ marginTop: '3rem' }} position="right">
-              {cancellable && (
-                <Button theme="secondary" onClick={onCancel}>
-                  {cancelText}
-                </Button>
+      {fadeTransition.map(({ item, key, props }) =>
+        item ? (
+          <animated.div
+            css={[fullscreen, darkLayer]}
+            key={key}
+            style={props}
+          ></animated.div>
+        ) : null,
+      )}
+
+      {slideUpTransition.map(({ item, key, props }) =>
+        item ? (
+          <animated.div
+            css={[fullscreen, whiteBoxWrapper]}
+            style={props}
+            key={key}
+          >
+            <div css={whiteBox}>
+              {title && <h3>{title}</h3>}
+              {description && <p>{description}</p>}
+              {children}
+              {!hideButtons && (
+                <GroupButton css={{ marginTop: '3rem' }} position="right">
+                  {cancellable && (
+                    <Button onClick={onCancel}>{cancelText}</Button>
+                  )}
+                  <Button onClick={onConfirm}>{confirmText}</Button>
+                </GroupButton>
               )}
-              <Button onClick={onConfirm}>{confirmText}</Button>
-            </GroupButton>
-          )}
-        </div>
-      </div>
+            </div>
+          </animated.div>
+        ) : null,
+      )}
     </Fragment>
   );
 };
@@ -58,6 +96,7 @@ Dialog.defaultProps = {
   cancelText: '취소',
   confirmText: '확인',
 };
+
 const fullscreen = css`
   position: fixed;
   top: 0;

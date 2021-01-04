@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core';
 import { Dialog } from 'styles';
 import { Meta } from '@storybook/react/types-6-0';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 export default {
   title: 'Dialog/Dialog',
@@ -12,25 +13,34 @@ export default {
       iframeHeight: 500,
     },
   },
+  decorators: [withKnobs],
 } as Meta;
 
 export const dialog = () => {
+  const title = text('title', '제목');
+  const description = text('description', '내용');
+  const visible = boolean('visible', true);
+  const confirmText = text('confirmText', '확인');
+  const cancelText = text('cancelText', '취소');
+  const cancellable = boolean('cancellable', false);
+
   return (
     <Dialog
-      title="포스트 삭제"
-      description="포스트를 정말로 삭제하시겠습니까?"
-      visible={true}
-      confirmText="확인"
-      cancellable
+      title={title}
+      description={description}
+      visible={visible}
+      confirmText={confirmText}
+      cancelText={cancelText}
+      cancellable={cancellable}
     />
   );
 };
 
-export const DeleteDialog = () => {
+export const ConfirmDialog = () => {
   return (
     <Dialog
-      title="포스트 삭제"
-      description="포스트를 정말로 삭제하시겠습니까?"
+      title="제목"
+      description="내용"
       visible={true}
       confirmText="확인"
       cancellable
@@ -41,8 +51,8 @@ export const DeleteDialog = () => {
 export const AlertDialog = () => {
   return (
     <Dialog
-      title="포스트 삭제"
-      description="포스트를 정말로 삭제하시겠습니까?"
+      title="제목"
+      description="내용"
       visible={true}
       confirmText="확인"
       cancellable={false}
