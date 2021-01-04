@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 export interface ButtonProps {
-  label: React.ReactNode;
+  children: React.ReactNode;
   backgroundColor?: string;
+  /** 버튼의 크기를 지정 합니다. */
   size?: 'small' | 'medium' | 'large';
-  className?: string;
+  /** 버튼의 테마를 설정합니다. */
   theme?:
     | 'secondary'
     | 'primary'
@@ -17,43 +18,62 @@ export interface ButtonProps {
     | 'out_success'
     | 'out_danger'
     | 'out_warning';
+  /** 버튼에서 아이콘만 보여줄 때 이 값을 `true`로 설정하세요. */
+  iconOnly?: boolean;
+  /** 버튼의 너비를 임의로 설정합니다. */
+  width?: string | number;
   onClick?: () => void;
 }
 
-export const CustomButton = ({
+export const Button = ({
   theme = 'secondary',
   size = 'medium',
   backgroundColor,
-  className,
-  label,
+  children,
+  width,
+  iconOnly,
   onClick,
   ...props
 }: ButtonProps) => {
   return (
     <button
       type="button"
-      css={[style, themes[theme], sizes[size]]}
+      css={[
+        style,
+        themes[theme],
+        sizes[size],
+        { width },
+        iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
+      ]}
       style={{ backgroundColor }}
       {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
 
 const style = css`
   font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  border: 0;
-  border-radius: 0.5em;
-  cursor: pointer;
-  display: inline-block;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  height: 2rem;
+  font-size: 0.875rem;
+  padding: 0 1rem;
+  border-radius: 0.25rem;
   line-height: 1;
-
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   &:focus {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
     border: none;
     outline: none;
+  }
+  svg {
+    width: 1em;
   }
 `;
 
@@ -128,4 +148,27 @@ const sizes = {
   `,
 };
 
-export default CustomButton;
+const iconOnlyStyle = css`
+  padding: 0;
+  border-radius: 50%;
+  svg {
+    margin: 0;
+  }
+`;
+
+const iconOnlySizes = {
+  small: css`
+    width: 1.75rem;
+    height: 1.75rem;
+  `,
+  medium: css`
+    width: 2.5rem;
+    height: 2.5rem;
+  `,
+  large: css`
+    width: 3rem;
+    height: 3rem;
+  `,
+};
+
+export default Button;

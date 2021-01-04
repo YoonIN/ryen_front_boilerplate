@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
-export type CustomUploadButtonProps = {
+export type UploadButtonProps = {
   label?: string;
   onChange?: any;
 };
@@ -10,10 +10,7 @@ export type CustomUploadButtonProps = {
  * 파일을 `Button` 컴포넌트처럼 보여지고 싶을때 사용 합니다.
  */
 
-export const CustomUploadButton = ({
-  label,
-  onChange,
-}: CustomUploadButtonProps) => {
+export const UploadButton = ({ label, onChange }: UploadButtonProps) => {
   return (
     <div css={[style]}>
       <label htmlFor="filePicker">{label}</label>
@@ -47,4 +44,4 @@ const style = css`
   }
 `;
 
-export default CustomUploadButton;
+export default UploadButton;

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
-export type CustomGroupButtonProps = {
+export type GroupButtonProps = {
   /** 버튼을 보여줄 방향 */
   direction: 'row' | 'column';
   /** 버튼을 정렬을 지정합니다. */
@@ -17,13 +17,13 @@ export type CustomGroupButtonProps = {
 /**
  * 여러개의 `Button` 컴포넌트를 보여주고 싶거나, 버튼을 정렬하고 싶을 땐 `ButtonGroup` 컴포넌트를 사용하세요.
  */
-export const CustomGroupButton = ({
+export const GroupButton = ({
   direction,
   position = 'left',
   children,
   gap,
   className,
-}: CustomGroupButtonProps) => {
+}: GroupButtonProps) => {
   const AlignStyle = css`
     justify-content: ${position === 'center'
       ? 'center'
@@ -48,7 +48,7 @@ export const CustomGroupButton = ({
   );
 };
 
-CustomGroupButton.defaultProps = {
+GroupButton.defaultProps = {
   direction: 'row',
   gap: '0.5rem',
 };
@@ -63,4 +63,4 @@ const gapStyle = (direction: 'row' | 'column', gap: number | string) => {
   });
 };
 
-export default CustomGroupButton;
+export default GroupButton;
