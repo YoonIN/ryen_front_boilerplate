@@ -3,4 +3,6 @@ import GroupButton from './Button/GroupButton';
 import UploadButton from './Button/UploadButton';
 import Icon from './Icon/Icon';
 import Dialog from './Dialog';
-export { Button, GroupButton, UploadButton, Icon, Dialog };
+import TextInput from './Input/TextInput';
+
+export { Button, GroupButton, UploadButton, Icon, Dialog, TextInput };

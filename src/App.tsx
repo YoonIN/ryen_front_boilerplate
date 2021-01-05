@@ -1,8 +1,12 @@
-import React from "react";
-import SideBar from "../src/components/common/sidebar/sidebar";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import SideBar from '../src/components/common/sidebar/sidebar';
+import './App.css';
 
 function App() {
+  const [value, setValue] = useState('1');
+  useEffect(() => {
+    console.log(value);
+  }, []);
   return (
     <>
       <SideBar />
